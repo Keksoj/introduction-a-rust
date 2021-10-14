@@ -1,0 +1,17 @@
+[
+    {
+        "id": 9,
+        "name": "Tortank",
+        "pokemon_type": ["Water"]
+    },
+    {
+        "id": 17,
+        "name": "Roucoups",
+        "pokemon_type": ["Normal", "Flying"]
+    },
+    {
+        "id": 25,
+        "name": "Pikachu",
+        "pokemon_type": ["Electric"]
+    }
+]
