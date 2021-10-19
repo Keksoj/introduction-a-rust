@@ -34,3 +34,6 @@ Vérifier que cargo fonctionne en lançant le programme contenu dans `src/main.r
 
 qui devrait afficher "Hello, world!"
 
+Pour afficher la documentation du code de ce projet, faites
+
+    cargo doc --open

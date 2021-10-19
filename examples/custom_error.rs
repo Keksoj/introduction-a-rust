@@ -1,12 +1,6 @@
 use serde::{Deserialize, Serialize};
 use serde_json;
-
-#[derive(Serialize, Deserialize, Debug)]
-struct Pokemon {
-    id: u16,
-    name: String,
-    pokemon_type: Vec<String>,
-}
+use introduction_a_rust::pokemon::Pokemon;
 
 #[derive(Debug)]
 enum MonErreurAMoi {

@@ -8,6 +8,18 @@ par Emmanuel Bosquet `@Keksoj`
 
 emmanuelbosquet.com/introduction-a-rust
 
+https://github.com/keksoj/introduction-a-rust.git
+
+---
+
+# Disclaimer
+
+![bg left](https://c.tenor.com/Ob4g9Zm7j-YAAAAC/pok%C3%A9mon-ash.gif)
+
+-   Rust est mon premier language
+-   J'ai été déçu par tout le reste
+-   En plus d'être biaisé il m'arrive d'être de mauvaise foi
+
 ---
 
 # Pourquoi rust ?
@@ -15,11 +27,12 @@ emmanuelbosquet.com/introduction-a-rust
 ![bg vertical](<rgb(255,128,0)>)
 ![](<rgb(255,255,255)>)
 
-Certaines personnes à Mozilla devaient aimer l'optimisation => pas de runtime (java, python)
+Certaines personnes à Mozilla devaient en avoir marre :
 
-Mais en avaient sans doute marre d'écrire des pointeurs => bye bye C/C++
+-   des runtimes et autres garbage collectors
+-   des fuites de mémoire en C et C++
 
-Rust a été mis au point pour être _memory safe_.
+Rust a été mis au point pour être performant et _memory safe_.
 
 ---
 
@@ -28,12 +41,14 @@ Rust a été mis au point pour être _memory safe_.
 ![bg vertical](<rgb(255,128,0)>)
 ![](<rgb(255,255,255)>)
 
--   les pointeurs sont créés, mais sous le capot
+-   la mémoire est allouée à la création d'une variable
 -   les fonctions se passent les références en attendant leur tour
 -   la mémoire est nettoyée quand la variable sort du scope
 -   le compilateur interdit le code hérétique (pointeurs nuls et autres horreurs)
 
-Si vous y tenez vous pouvez quand même écrire les pointeurs vous-mêmes.
+Si ça compile ça plantera pas !
+
+Le compilateur est votre meilleur ami (et votre pire ennemi).
 
 ---
 
@@ -95,22 +110,42 @@ enum PokemonType {
 
 ---
 
+# `Option<type>`
+
+Le type qui :
+
+-   soit contient une valeur => `Some(valeur)`
+-   soit ne contient rien => `None`
+
+```rust
+type EvolueEn = Option<String>;
+```
+
+Un Pokemon peut soit :
+
+-   évoluer dans un autre pokemon => `Some(String::from("Dracofeu"))`
+-   ne pas évoluer du tout => `None`
+
+---
+
 # Les structs
 
 ![bg w:80% right:30%](https://c.tenor.com/cD7U--DX9okAAAAC/bulbasaur-pokemon.gif)
 
 ```rust
-struct Pokemon {
+pub struct Pokemon {
     id: u16,
-    name: String,
-    level: u16,
+    nom: String,
+    niveau: u16,
+    evolue_en: Option<String>,
     pokemon_type: Vec<PokemonType>,
 }
 
 let bulbizarre = Pokemon {
     id: 1,
-    name: String::from("Bulbizarre"),
-    level: 1,
+    nom: String::from("Bulbizarre"),
+    niveau: 1,
+    evolue_en: Some(String::from("Herbizarre")),
     pokemon_type: vec![
         PokemonType::Grass,
         PokemonType::Poison
@@ -125,8 +160,8 @@ let bulbizarre = Pokemon {
 ```rust
 impl Pokemon {
     fn next_level(&mut self) {
-        println!("{} passe au niveau suivant !", self.name);
-        self.level += 1;
+        println!("{} passe au niveau suivant !", self.nom);
+        self.niveau += 1;
     }
 }
 ```
@@ -135,4 +170,65 @@ impl Pokemon {
 
 ---
 
-# Des traits
+![bg left:30%](https://vignette.wikia.nocookie.net/parody/images/1/16/Ash_Ketchum_Surprised.jpg)
+
+# Comment ça, pas d'héritage !?
+
+| En             | le modèle est |    On écrit d'abord…    |     et ensuite…     |
+| :------------- | ------------- | :---------------------: | :-----------------: |
+| Orienté Objet, | top-down.     |   les classes mères,    | les classes filles. |
+| Rust,          | bottom-up.    | le format de la donnée, |    les structs.     |
+
+Par contre, on a plein d'interfaces en Rust (on appelle ça des traits).
+
+---
+
+# Gestion d'erreur => Result
+
+Try/catch, throw… en Rust on a mieux que ça.
+
+```rust
+enum Result {
+    Ok(valeur),
+    Err(erreur),
+}
+```
+
+Inclus dans l'offre :
+
+-   du pattern matching,
+-   des erreurs customs,
+-   du sucre syntaxique,
+-   des libs qui vous facilitent la vie
+
+---
+
+# Des programmes cools en rust
+
+-   `ripgrep` : remplace `grep` (plus convivial)
+-   `bat`: remplace `cat` (coloration)
+-   `sd` : remplace `sed`
+-   `fd` : remplace `find`
+-   `dust` : remplace `du` (c'est beaucoup plus joli)
+
+En Rust ça va plus vite.
+
+---
+
+# Ownership & borrow checker
+
+3 règles absolues :
+
+1. Une fonction qui prend en argument une variable `T` en a l'_ownership_ — plus personne d'autre ne peut y toucher.
+2. Une référence immutable `&T` peut être utilisée par plein de fonctions à la fois
+3. Une référence mutable `&mut T` ne peut être utilisée que par **une seule fonction** à la fois
+
+---
+
+![bg right:40%](https://c.tenor.com/Z4adaEQmUqkAAAAd/pokemon-fighting.gif)
+
+# J'ai pas compris, qu'est-ce que je dois faire ?
+
+## Bats-toi contre le compilateur – et perds !
+
+À force de cogner sur le clavier ça va passer.
