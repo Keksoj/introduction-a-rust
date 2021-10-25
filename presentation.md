@@ -52,6 +52,17 @@ Le compilateur est votre meilleur ami (et votre pire ennemi).
 
 ---
 
+# Facile à installer
+
+```bash
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+rustup update
+```
+
+Pas besoin de sudo.
+
+---
+
 # Une syntaxe lisible
 
 ```rust
@@ -137,7 +148,7 @@ pub struct Pokemon {
     id: u16,
     nom: String,
     niveau: u16,
-    evolue_en: Option<String>,
+    evolue_en: EvolueEn,
     pokemon_type: Vec<PokemonType>,
 }
 
@@ -222,6 +233,8 @@ En Rust ça va plus vite.
 1. Une fonction qui prend en argument une variable `T` en a l'_ownership_ — plus personne d'autre ne peut y toucher.
 2. Une référence immutable `&T` peut être utilisée par plein de fonctions à la fois
 3. Une référence mutable `&mut T` ne peut être utilisée que par **une seule fonction** à la fois
+
+Big up à Benjamin Coenen qui a fait [une super conf à Devoxx 2021](https://youtu.be/YuHoujk8SUc) à ce sujet.
 
 ---
 

@@ -28,7 +28,7 @@ Clonez ce dépot:
     git clone https://github.com/keksoj/introduction_a_rust.git
     cd introduction_a_rust
 
-Vérifier que cargo fonctionne en lançant le programme contenu dans `src/main.rs` :
+Vérifier que cargo fonctionne en lançant :
 
     cargo run
 
@@ -37,3 +37,4 @@ qui devrait afficher "Hello, world!"
 Pour afficher la documentation du code de ce projet, faites
 
     cargo doc --open
+

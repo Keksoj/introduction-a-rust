@@ -16,7 +16,9 @@ pub enum PokemonType {
     Electric,
 }
 
-/// Type custom, wrapper autour d'`Option<String>`
+/// les perspectives d'évolution d'un pokemon.
+/// - `Some(tel_pokemon)`. Peut évoluer en tel pokemon.
+/// - `None`. Pas d'évolution possible.
 pub type EvolueEn = Option<String>;
 
 /// La description d'un Pokémon, avec ses méthodes.
@@ -28,9 +30,8 @@ pub struct Pokemon {
     pub nom: String,
     /// le niveau du pokémon, appelé à changer avec le temps
     pub niveau: u16,
-    /// les perspectives d'évolution. Peut être
-    /// `Some(le_nom_d_un_pokemon)` ou `None` (pas d'évolution possible)
-    pub evolue_en: Option<String>,
+    /// Type custom qui wrappe `Option<String>`
+    pub evolue_en: EvolueEn,
     /// Un pokémon peut avoir plusieurs types
     pub pokemon_type: Vec<PokemonType>,
 }
