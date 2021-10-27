@@ -1,19 +1,16 @@
 use serde::{Deserialize, Serialize};
 
 /// Cette énumération liste les différents types de pokémon
-#[derive(Serialize, Deserialize, Debug)]
-pub enum PokemonType {
-    /// Pokémon herbe
-    Grass,
-    /// Pokémon feu
-    Fire,
-    /// Et caetera on s'est compris
-    Earth,
-    Water,
-    Flying,
+#[derive(Serialize, Deserialize, Debug, PartialEq)]
+pub enum TypeDePokemon {
+    Herbe,
+    Feu,
+    Terre,
+    Eau,
+    Vol,
     Poison,
     Normal,
-    Electric,
+    Electrique,
 }
 
 /// les perspectives d'évolution d'un pokemon.
@@ -22,7 +19,7 @@ pub enum PokemonType {
 pub type EvolueEn = Option<String>;
 
 /// La description d'un Pokémon, avec ses méthodes.
-#[derive(Serialize, Deserialize, Debug)]
+#[derive(Serialize, Deserialize, Debug, PartialEq)]
 pub struct Pokemon {
     /// le numéro du pokémon dans le pokédex
     pub id: u16,
@@ -33,7 +30,7 @@ pub struct Pokemon {
     /// Type custom qui wrappe `Option<String>`
     pub evolue_en: EvolueEn,
     /// Un pokémon peut avoir plusieurs types
-    pub pokemon_type: Vec<PokemonType>,
+    pub pokemon_type: Vec<TypeDePokemon>,
 }
 
 impl Pokemon {
@@ -53,21 +50,25 @@ impl Pokemon {
 ///
 /// Exemple:
 /// ```
+/// use introduction_a_rust::pokemon::{PokemonBuilder, TypeDePokemon};
+///
 /// let mut carapuce = PokemonBuilder::nouveau()
 ///    .avec_comme_numero(7)
 ///    .avec_comme_nom("Carapuce")
 ///    .avec_comme_niveau(4)
-///    .peut_evoluer_en("Carabaffe".to_string())
-///    .avec_comme_type(PokemonType::Water)
+///    .peut_evoluer_en("Carabaffe")
+///    .avec_comme_type(TypeDePokemon::Eau)
 ///    .build();
 /// ```
 #[derive(Default)]
 pub struct PokemonBuilder {
     pub id: Option<u16>,
     pub nom: Option<String>,
+    /// Niveau par défaut: 1
     pub niveau: Option<u16>,
+    /// Valeur par défaut: None
     pub evolue_en: Option<String>,
-    pub pokemon_type: Vec<PokemonType>,
+    pub pokemon_type: Vec<TypeDePokemon>,
 }
 
 impl PokemonBuilder {
@@ -90,7 +91,7 @@ impl PokemonBuilder {
     /// Cette syntaxe permet de dire:
     /// - « La fonction prend en argument un variable de type `T` »
     /// - « Ce type `T` doit satisfaire le trait (= l'interface) `ToString` »
-    /// 
+    ///
     /// la fonction pourra donc accepter `String`, `&str`,
     /// ou même `std::net::SocketAddr` si ça nous chante
     pub fn avec_comme_nom<T>(mut self, nom: T) -> Self
@@ -101,17 +102,22 @@ impl PokemonBuilder {
         self
     }
 
+    /// Attribue un niveau au pokémon (défaut: 1)
     pub fn avec_comme_niveau(mut self, niveau: u16) -> Self {
         self.niveau = Some(niveau);
         self
     }
 
-    pub fn peut_evoluer_en(mut self, autre_pokemon: String) -> Self {
-        self.evolue_en = Some(autre_pokemon);
+    /// Attribue un possibilité d'évolution
+    pub fn peut_evoluer_en<T>(mut self, autre_pokemon: T) -> Self
+    where
+        T: ToString,
+    {
+        self.evolue_en = Some(autre_pokemon.to_string());
         self
     }
 
-    pub fn avec_comme_type(mut self, type_de_pokemon: PokemonType) -> Self {
+    pub fn avec_comme_type(mut self, type_de_pokemon: TypeDePokemon) -> Self {
         self.pokemon_type.push(type_de_pokemon);
         self
     }
@@ -130,11 +136,6 @@ impl PokemonBuilder {
             std::process::exit(1);
         }
 
-        if self.niveau.is_none() {
-            println!("Veuillez renseigner un niveau pour votre pokemon");
-            std::process::exit(1);
-        }
-
         if self.pokemon_type.is_empty() {
             println!("Veuillez renseigner au moins un type pour votre pokemon");
             std::process::exit(1);
@@ -145,9 +146,47 @@ impl PokemonBuilder {
             // Si l'option est None, le thread panique!
             id: self.id.unwrap(),
             nom: self.nom.unwrap(),
-            niveau: self.niveau.unwrap(),
+            niveau: self.niveau.unwrap_or(1),
             evolue_en: self.evolue_en,
             pokemon_type: self.pokemon_type,
         }
+    }
+}
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+
+    #[test]
+    fn le_pokemon_builder_fonctionne() {
+        let pikachu_cree_avec_le_struct = Pokemon {
+            id: 25,
+            nom: "Pikachu".to_string(),
+            niveau: 1,
+            evolue_en: Some("Raichu".to_string()),
+            pokemon_type: vec![TypeDePokemon::Electrique],
+        };
+
+        let pikachu_cree_avec_le_builder = PokemonBuilder::nouveau()
+            .avec_comme_numero(25)
+            .avec_comme_nom("Pikachu")
+            .peut_evoluer_en("Raichu")
+            .avec_comme_type(TypeDePokemon::Electrique)
+            .build();
+
+        assert_eq!(pikachu_cree_avec_le_struct, pikachu_cree_avec_le_builder);
+    }
+
+    #[test]
+    fn la_fonction_next_level_fonctionne() {
+        let mut pikachu = PokemonBuilder::nouveau()
+            .avec_comme_numero(25)
+            .avec_comme_nom("Pikachu")
+            .avec_comme_type(TypeDePokemon::Electrique)
+            .avec_comme_niveau(5)
+            .build();
+
+        pikachu.next_level();
+        assert_eq!(pikachu.niveau, 6);
     }
 }

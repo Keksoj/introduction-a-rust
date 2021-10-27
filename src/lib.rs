@@ -4,7 +4,7 @@
 //! La documentation peut contenir des exemples de code:
 //!
 //! ```
-//! use introduction_a_rust::pokemon::{Pokemon, PokemonBuilder, PokemonType};
+//! use introduction_a_rust::pokemon::{Pokemon, PokemonBuilder, TypeDePokemon};
 //! 
 //! fn main() {
 //!     let bulbizarre = Pokemon {
@@ -12,12 +12,12 @@
 //!         nom: String::from("Bulbizarre"),
 //!         niveau: 1,
 //!         evolue_en: Some(String::from("Herbizarre")),
-//!         pokemon_type: vec![PokemonType::Grass, PokemonType::Poison],
+//!         pokemon_type: vec![TypeDePokemon::Herbe, TypeDePokemon::Poison],
 //!     };
 //!     println!("{:?}", bulbizarre);
 //! }
 //! ```
-//!
+//! Le compilateur teste même les exemples de code dans la doc !
 
 
 

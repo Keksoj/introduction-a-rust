@@ -3,20 +3,20 @@
         "id": 9,
         "nom": "Tortank",
         "niveau": 64,
-        "pokemon_type": ["Water"]
+        "type_de_pokemon": ["Eau"]
     },
     {
         "id": 17,
         "nom": "Roucoups",
         "niveau": 50,
         "evolue_en": null,
-        "pokemon_type": ["Normal", "Flying"]
+        "type_de_pokemon": ["Normal", "Vol"]
     },
     {
         "id": 25,
         "nom": "Pikachu",
         "niveau": 5,
         "evolue_en": "Raichu",
-        "pokemon_type": ["Electric"]
+        "type_de_pokemon": ["Electrique"]
     }
 ]

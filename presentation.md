@@ -106,16 +106,17 @@ type mon_type_de_tableau_perso = [u16; 5];
 
 ![bg left:40%](https://c.tenor.com/GNoM45eC-t4AAAAd/mr-bean-rowan-atkinson.gif)
 
-Le type qui vous laisse choisir
+Le type qui vous laisse choisir.
 
 ```rust
-enum PokemonType {
-    Grass,
-    Fire,
-    Earth,
-    Water,
-    Flying,
+pub enum TypeDePokemon {
+    Herbe,
+    Feu,
+    Eau,
+    Vol,
+    Normal,
     Poison,
+    Electrique,
 }
 ```
 
@@ -149,7 +150,7 @@ pub struct Pokemon {
     nom: String,
     niveau: u16,
     evolue_en: EvolueEn,
-    pokemon_type: Vec<PokemonType>,
+    pokemon_type: Vec<TypeDePokemon>,
 }
 
 let bulbizarre = Pokemon {
@@ -158,8 +159,8 @@ let bulbizarre = Pokemon {
     niveau: 1,
     evolue_en: Some(String::from("Herbizarre")),
     pokemon_type: vec![
-        PokemonType::Grass,
-        PokemonType::Poison
+        TypeDePokemon::Herbe,
+        TypeDePokemon::Poison
     ],
 };
 ```
@@ -214,18 +215,6 @@ Inclus dans l'offre :
 
 ---
 
-# Des programmes cools en rust
-
--   `ripgrep` : remplace `grep` (plus convivial)
--   `bat`: remplace `cat` (coloration)
--   `sd` : remplace `sed`
--   `fd` : remplace `find`
--   `dust` : remplace `du` (c'est beaucoup plus joli)
-
-En Rust ça va plus vite.
-
----
-
 # Ownership & borrow checker
 
 3 règles absolues :
@@ -245,3 +234,38 @@ Big up à Benjamin Coenen qui a fait [une super conf à Devoxx 2021](https://you
 ## Bats-toi contre le compilateur – et perds !
 
 À force de cogner sur le clavier ça va passer.
+
+---
+
+## Des programmes cools en rust: la ligne de commande
+
+-   `ripgrep` : remplace `grep` (plus convivial)
+-   `bat`: remplace `cat` (coloration)
+-   `sd` : remplace `sed`
+-   `fd` : remplace `find`
+-   `dust` : remplace `du` (c'est beaucoup plus joli)
+
+En Rust ça va plus vite.
+
+---
+
+## Des programmes plus vénères
+
+![img w:200](https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Deno.svg/440px-Deno.svg.png) Deno, runtime JavaScript et Typescript.
+
+![img](https://avatars.githubusercontent.com/u/25197590?s=200&v=4) Sōzu, reverse proxy fait sur mesure pour Clever Cloud.
+Écrit par [Geoffroy Couprie, aka Geal](https://github.com/Geal).
+
+---
+
+# Comment apprendre Rust ?
+
+Le [Rust book](https://doc.rust-lang.org/book/) a été [largement traduit en français](https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Deno.svg/440px-Deno.svg.png)!
+
+Udemy, Exercism, etc.
+
+Les questions de noobs sont tolérées sur [le forum de la communauté](https://users.rust-lang.org/) (en anglais)
+
+Stack Overflow pour les puristes.
+
+Écrivez-moi ! <emmanuel.bosquet@clever-cloud.com>

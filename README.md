@@ -38,3 +38,9 @@ Pour afficher la documentation du code de ce projet, faites
 
     cargo doc --open
 
+
+## Pense-bête
+
+Lancer la génération de la présentation avec [marpit](https://marpit.marp.app/)
+
+    marp -w presentation.md -o index.html

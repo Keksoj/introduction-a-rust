@@ -1,4 +1,3 @@
-use serde::{Deserialize, Serialize};
 use serde_json;
 use introduction_a_rust::pokemon::Pokemon;
 

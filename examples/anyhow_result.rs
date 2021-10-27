@@ -1,6 +1,5 @@
-use anyhow::{bail, Context, Error};
+use anyhow::Context;
 use introduction_a_rust::pokemon::Pokemon;
-use serde::{Deserialize, Serialize};
 use serde_json;
 
 fn main() -> anyhow::Result<()> {

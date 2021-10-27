@@ -1,4 +1,5 @@
-use introduction_a_rust::pokemon::{Pokemon, PokemonBuilder, PokemonType};
+use introduction_a_rust::pokemon::PokemonBuilder;
+use introduction_a_rust::pokemon::{Pokemon, TypeDePokemon};
 
 fn main() {
     let bulbizarre = Pokemon {
@@ -6,7 +7,7 @@ fn main() {
         nom: String::from("Bulbizarre"),
         niveau: 1,
         evolue_en: Some(String::from("Herbizarre")),
-        pokemon_type: vec![PokemonType::Grass, PokemonType::Poison],
+        pokemon_type: vec![TypeDePokemon::Herbe, TypeDePokemon::Poison],
     };
 
     println!("{:?}", bulbizarre);
@@ -16,7 +17,7 @@ fn main() {
         .avec_comme_nom("Carapuce")
         .avec_comme_niveau(4)
         .peut_evoluer_en("Carabaffe".to_string())
-        .avec_comme_type(PokemonType::Water)
+        .avec_comme_type(TypeDePokemon::Eau)
         .build();
 
     println!("{:?}", carapuce);
