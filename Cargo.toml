@@ -6,8 +6,13 @@ name = "introduction_a_rust"
 version = "0.1.0"
 authors = ["Emmanuel Bosquet <bjokac@gmail.com>"]
 edition = "2018"
+default-run = "main"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
+
+# [workspace]
+# members = ["main"]
+# default-members = ["main"]
 
 [dependencies]
 # Les dépendances sont appelées des "crates", ce qui veut dire "caisse"
@@ -15,7 +20,6 @@ edition = "2018"
 # nous amène sur https://crates.io/crates/rand et nous dit quoi copier-coller :
 rand = "0.8.4"
 # en plus de nous indiquer les repos, la doc...
-
 serde_json = "1.0.59"
 serde = { version = "1.0.117", features = ["derive"] }
 anyhow = "1.0.44"
