@@ -30,7 +30,7 @@ pub struct Pokemon {
     /// Type custom qui wrappe `Option<String>`
     pub evolue_en: EvolueEn,
     /// Un pokémon peut avoir plusieurs types
-    pub pokemon_type: Vec<TypeDePokemon>,
+    pub type_de_pokemon: Vec<TypeDePokemon>,
 }
 
 impl Pokemon {
@@ -68,7 +68,7 @@ pub struct PokemonBuilder {
     pub niveau: Option<u16>,
     /// Valeur par défaut: None
     pub evolue_en: Option<String>,
-    pub pokemon_type: Vec<TypeDePokemon>,
+    pub type_de_pokemon: Vec<TypeDePokemon>,
 }
 
 impl PokemonBuilder {
@@ -118,12 +118,12 @@ impl PokemonBuilder {
     }
 
     pub fn avec_comme_type(mut self, type_de_pokemon: TypeDePokemon) -> Self {
-        self.pokemon_type.push(type_de_pokemon);
+        self.type_de_pokemon.push(type_de_pokemon);
         self
     }
 
     /// Cette méthode consomme le builder et renvoie une instance de Pokemon.
-    /// Si `id`, `nom`, `niveau`, ou `pokemon_type` ne sont pas renseignés,
+    /// Si `id`, `nom`, `niveau`, ou `type_de_pokemon` ne sont pas renseignés,
     /// un message d'erreur s'affiche et le process est stoppé.
     pub fn build(self) -> Pokemon {
         if self.id.is_none() {
@@ -136,7 +136,7 @@ impl PokemonBuilder {
             std::process::exit(1);
         }
 
-        if self.pokemon_type.is_empty() {
+        if self.type_de_pokemon.is_empty() {
             println!("Veuillez renseigner au moins un type pour votre pokemon");
             std::process::exit(1);
         }
@@ -148,7 +148,7 @@ impl PokemonBuilder {
             nom: self.nom.unwrap(),
             niveau: self.niveau.unwrap_or(1),
             evolue_en: self.evolue_en,
-            pokemon_type: self.pokemon_type,
+            type_de_pokemon: self.type_de_pokemon,
         }
     }
 }
@@ -164,7 +164,7 @@ mod tests {
             nom: "Pikachu".to_string(),
             niveau: 1,
             evolue_en: Some("Raichu".to_string()),
-            pokemon_type: vec![TypeDePokemon::Electrique],
+            type_de_pokemon: vec![TypeDePokemon::Electrique],
         };
 
         let pikachu_cree_avec_le_builder = PokemonBuilder::nouveau()

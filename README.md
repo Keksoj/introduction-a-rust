@@ -5,7 +5,7 @@
 Installez rust en suivant [ces instructions](https://www.rust-lang.org/learn/get-started),
 résumables ainsi :
 
-## Installez rust
+## Installez rustup
 
 C'est l'installeur et gestionnaire de version de rust.
 
@@ -38,6 +38,17 @@ Pour afficher la documentation du code de ce projet, faites
 
     cargo doc --open
 
+Lancer les tests
+
+    cargo test
+
+Lancer le binaire `src/bin/bulbizarre.rs`
+
+    cargo run --bin bulbizarre
+
+Lancer l'exemple `examples/custom_error.rs`
+
+    cargo run --example custom_error
 
 ## Pense-bête
 

@@ -12,7 +12,7 @@
 //!         nom: String::from("Bulbizarre"),
 //!         niveau: 1,
 //!         evolue_en: Some(String::from("Herbizarre")),
-//!         pokemon_type: vec![TypeDePokemon::Herbe, TypeDePokemon::Poison],
+//!         type_de_pokemon: vec![TypeDePokemon::Herbe, TypeDePokemon::Poison],
 //!     };
 //!     println!("{:?}", bulbizarre);
 //! }
