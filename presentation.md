@@ -260,7 +260,7 @@ En Rust ça va plus vite.
 
 # Comment apprendre Rust ?
 
-Le [Rust book](https://doc.rust-lang.org/book/) a été [largement traduit en français](https://upload.wikimedia.org/wikipedia/commons/thumb/8/84/Deno.svg/440px-Deno.svg.png)!
+Le [Rust book](https://doc.rust-lang.org/book/) a été [largement traduit en français](https://jimskapt.github.io/rust-book-fr/)!
 
 Udemy, Exercism, etc.
 
