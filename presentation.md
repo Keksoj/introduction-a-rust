@@ -264,8 +264,16 @@ Le [Rust book](https://doc.rust-lang.org/book/) a été [largement traduit en fr
 
 Udemy, Exercism, etc.
 
-Les questions de noobs sont tolérées sur [le forum de la communauté](https://users.rust-lang.org/) (en anglais)
+Les questions de noobs sont bienvenues sur [le forum de la communauté](https://users.rust-lang.org/) (en anglais)
 
 Stack Overflow pour les puristes.
 
 Écrivez-moi ! <emmanuel.bosquet@clever-cloud.com>
+
+---
+
+# Merci pour votre attention !
+
+Et maintenant lees questions !
+
+![img bg right](https://c.tenor.com/XYLo1hKDxksAAAAC/jigglypuff-wow.gif)

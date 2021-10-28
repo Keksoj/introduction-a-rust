@@ -1,4 +1,8 @@
-# Introduction à rust
+![img](img/rustacean-orig-noshadow.svg)
+
+# Rust, ou le plaisir de coder
+
+Retrouvez la présentation [en ligne](https://keksoj.github.io/introduction-a-rust).
 
 [Rust](https://www.rust-lang.org/) c'est génial, on va voir pourquoi.
 
