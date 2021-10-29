@@ -10,10 +10,6 @@ default-run = "main"
 
 # See more keys and their definitions at https://doc.rust-lang.org/cargo/reference/manifest.html
 
-# [workspace]
-# members = ["main"]
-# default-members = ["main"]
-
 [dependencies]
 # Les dépendances sont appelées des "crates", ce qui veut dire "caisse"
 # Sur https://crates.io, on trouve tout et absolument tout. Une brève recherche pour rand
