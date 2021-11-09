@@ -1,4 +1,6 @@
-<iframe width="560" height="315" src="https://www.youtube.com/embed/68Yw_n6SySk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+![img](img/rustacean-orig-noshadow.svg)
+
+## [Voir la conf sur youtube](https://www.youtube.com/embed/68Yw_n6SySk)
 
 # Rust, ou le plaisir de coder
 
