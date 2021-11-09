@@ -1,4 +1,4 @@
-![img](img/rustacean-orig-noshadow.svg)
+<iframe width="560" height="315" src="https://www.youtube.com/embed/68Yw_n6SySk" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 # Rust, ou le plaisir de coder
 
@@ -29,9 +29,9 @@ Rustup vérifiera que vous avez la dernière version des outils nécessaire, sur
 
 Dans ce dépôt, il y a :
 
-- Un hello world parce que c'est la vie
-- Une lib Pokémon, qui modélise des pokémons, peut les créer, les transformer, les sérialiser
-- Trois examples de désérialisation d'un `pokemons.json` pour illustrer `Result`
+-   Un hello world parce que c'est la vie
+-   Une lib Pokémon, qui modélise des pokémons, peut les créer, les transformer, les sérialiser
+-   Trois examples de désérialisation d'un `pokemons.json` pour illustrer `Result`
 
 Clonez ce dépot:
 
