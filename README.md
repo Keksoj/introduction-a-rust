@@ -1,6 +1,6 @@
 ![img](img/rustacean-orig-noshadow.svg)
 
-## [Voir la conf sur youtube](https://www.youtube.com/embed/68Yw_n6SySk)
+## [Voir la conf sur youtube](https://youtu.be/68Yw_n6SySk)
 
 # Rust, ou le plaisir de coder
 
